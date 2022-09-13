@@ -1,0 +1,27 @@
+{
+  "Sondage 2": {
+    "À quelle tranche d'âge appartenez-vous?": {
+      "a": "0-25 ans",
+      "b": "25-50 ans",
+      "c": "50-75 ans",
+      "d": "75 ans et plus"
+    },
+    "Êtes-vous une femme ou un homme?": {
+      "a": "Femme",
+      "b": "Homme",
+      "c": "Je ne veux pas répondre"
+    },
+    "Combien de tasses de café buvez-vous chaque jour?": {
+      "a": "Je ne bois pas de café",
+      "b": "Entre 1 et 5 tasses",
+      "c": "Entre 6 et 10 tasses",
+      "d": "d:10 tasses ou plus"
+    },
+    "Combien de consommations alcoolisées buvez-vous chaque jour?": {
+      "a": "0",
+      "b": "1",
+      "c": "2",
+      "d": "3 ou plus"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "Sondage 1": {
+    "À quelle tranche d'âge appartenez-vous?": {
+      "a": "0-25 ans",
+      "b": "25-50 ans",
+      "c": "50-75 ans",
+      "d": "75 ans et plus"
+    },
+    "Êtes-vous une femme ou un homme?": {
+      "a": "Femme",
+      "b": "Homme",
+      "c": "Je ne veux pas répondre"
+    },
+    "Quel journal lisez-vous à la maison?": {
+      "a": "La Presse",
+      "b": "Le Journal de Montréal",
+      "c": "The Gazette",
+      "d": "Le Devoir"
+    },
+    "Combien de temps accordez-vous à la lecture de votre journal quotidiennement?": {
+      "a": "Moins de 10 minutes",
+      "b": "Entre 10 et 30 minutes",
+      "c": "Entre 30 et 60 minutes",
+      "d": "60 minutes ou plus"
+    }
+  }
+}
