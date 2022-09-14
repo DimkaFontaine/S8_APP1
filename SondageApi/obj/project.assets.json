@@ -823,24 +823,26 @@
     ]
   },
   "packageFolders": {
-    "/home/dim/.nuget/packages/": {}
+    "C:\\Users\\Dimka\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/dim/Documents/App1/code/S8_APP1/SondageApi/SondageApi.csproj",
+      "projectUniqueName": "D:\\Uni\\S8\\App1\\S8_APP1\\SondageApi\\SondageApi.csproj",
       "projectName": "SondageApi",
-      "projectPath": "/home/dim/Documents/App1/code/S8_APP1/SondageApi/SondageApi.csproj",
-      "packagesPath": "/home/dim/.nuget/packages/",
-      "outputPath": "/home/dim/Documents/App1/code/S8_APP1/SondageApi/obj/",
+      "projectPath": "D:\\Uni\\S8\\App1\\S8_APP1\\SondageApi\\SondageApi.csproj",
+      "packagesPath": "C:\\Users\\Dimka\\.nuget\\packages\\",
+      "outputPath": "D:\\Uni\\S8\\App1\\S8_APP1\\SondageApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/dim/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Dimka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -887,7 +889,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
