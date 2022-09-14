@@ -10,9 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<DataBaseFileUri>(builder.Configuration.GetSection(DataBaseFileUri.Section));
-
-builder.Services.AddSingleton<ITextDataBase,TextDataBase>();
+builder.Services
+    .AddSingleton<ISondageResponse, SondageResponse>()
+    .AddSingleton<ISondageReader, SondageReader>();
 
 var app = builder.Build();
 
