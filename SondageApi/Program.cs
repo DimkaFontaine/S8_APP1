@@ -1,3 +1,4 @@
+using SondageApi.Controllers;
 using SondageApi.Models;
 using SondageApi.Services;
 
@@ -13,6 +14,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<DataBaseFileUri>(builder.Configuration.GetSection(DataBaseFileUri.Section));
 
 builder.Services.AddSingleton<ITextDataBase,TextDataBase>();
+
+builder.Services.AddSingleton<SondageController, SondageController>();
 
 var app = builder.Build();
 

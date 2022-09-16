@@ -1,6 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using SondageApi.Models;
 using System.Reflection;
+using System.IO;
+using System.Runtime.ConstrainedExecution;
+using static System.Net.Mime.MediaTypeNames;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace SondageApi.Controllers;
 
@@ -13,73 +18,22 @@ public class SondageController : ControllerBase
     public SondageController(ILogger<SondageController> logger)
     {
         _logger = logger;
+        Get();
     }
 
     [HttpGet(Name = "GetSondage")]
-    public IEnumerable<SondageQuestion> Get()
+    public IEnumerable<Sondage> Get()
     {
-        string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Chuck\source\repos\DimkaFontaine\S8_APP1\SondageApi\sondage.txt");
-        string[] questions = new String[100];
-        string[,] answers = new String[100, 100];
-        int lineNum = 0;
-        int questionNum = 0;
-        int answerNum = 0;
+        int fileNum = 0;
+        string[] files = Directory.GetFiles(DataBaseFileUri.Section);
+        List<Sondage> sondages = new List<Sondage>();
 
-        // Display the file contents by using a foreach loop.
-        System.Console.WriteLine("Contents of sondage.txt = ");
-
-        foreach (string line in lines)
+        foreach (string file in files)
         {
-            findQuestions(ref questionNum, questions, line);
-            findAnswers(questions, answers, questionNum, answerNum, line);
-            lineNum++;
+            _logger.LogInformation(file);
+            sondages.Add(JsonConvert.DeserializeObject<Sondage>(file));
+            fileNum++;
         }
-
-        // Keep the console window open in debug mode.
-        Console.WriteLine("Press any key to exit.");
-        System.Console.ReadKey();
-
-
-        return Enumerable.Range(0, lineNum)
-            .Select(index => 
-                new SondageQuestion("random question " + index, new[]{"a", "b", "c"}))
-            .ToArray();
-    }
-
-    // Find each questions.
-    private static void findQuestions(ref int questionNum, string[] questions, string line)
-    {
-        Console.WriteLine("\t" + line);
-        if (line.Contains("?"))
-        {
-            foreach (char c in line)
-            {
-                while (c.Equals("?"))
-                {
-                    questions[questionNum++].Append(c);
-                }
-            }
-        }
-        if (questionNum > 0)
-        {
-            Console.WriteLine("\t" + "Found Question: " + questions[questionNum - 1]);
-        }
-    }
-
-    // Find each answer
-    private static void findAnswers(string[] questions, string[,] answers, int questionNum, int answerNum, string line)
-    {
-        if (questionNum > 0)
-        {
-            string txtAnswers = line.Replace(questions[questionNum], "");
-            System.Console.WriteLine("Found answers: " + txtAnswers);
-            foreach (char c in txtAnswers)
-            {
-                while (c.Equals(",")!)
-                {
-                    answers[questionNum, answerNum++].Append(c);
-                }
-            }
-        }
+        return sondages;
     }
 }
