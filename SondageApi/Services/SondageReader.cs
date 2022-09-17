@@ -9,6 +9,7 @@ namespace SondageApi.Services
     {
         private ILogger<SondageReader> _logger;
         private DataBaseFileUri _dataBaseFileUri;
+        private List<Sondage>? _sondages;
         public SondageReader(ILogger<SondageReader> logger, IOptions<DataBaseFileUri> dataBaseFileUri)
         {
             _dataBaseFileUri = dataBaseFileUri.Value;
@@ -17,22 +18,27 @@ namespace SondageApi.Services
 
         public IEnumerable<Sondage> GetSondages()
         {
+            if (_sondages is not null)
+            {
+                return _sondages;
+            }
+
             try
             {
                 _logger.LogInformation("\tTrying to read: " + Directory.GetCurrentDirectory() + _dataBaseFileUri.DataBaseReadFileUri);
                 _logger.LogInformation("\tDirectory Exists:  " + Directory.Exists(Directory.GetCurrentDirectory() + _dataBaseFileUri.DataBaseReadFileUri));
                 string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + _dataBaseFileUri.DataBaseReadFileUri);
-                List<Sondage> sondages = new List<Sondage>();
+                _sondages = new List<Sondage>();
 
                 if (files is not null && files.Any())
                 {
                     foreach (string file in files)
                     {
-                        string jsonText = System.IO.File.ReadAllText(file);
-                        sondages.Add(JsonSerializer.Deserialize<Sondage>(jsonText) ?? throw new ArgumentNullException(file));
+                        string jsonText = File.ReadAllText(file);
+                        _sondages.Add(JsonSerializer.Deserialize<Sondage>(jsonText) ?? throw new ArgumentNullException(file));
                     }
                 }
-                return sondages;
+                return _sondages;
             }
             catch (ArgumentNullException nullEx)
             {

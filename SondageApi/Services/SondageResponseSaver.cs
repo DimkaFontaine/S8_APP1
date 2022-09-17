@@ -1,3 +1,5 @@
+using SondageApi.Models;
+
 namespace SondageApi.Services
 {
     public class SondageResponseSaver : IResponse
@@ -9,7 +11,7 @@ namespace SondageApi.Services
             _logger = logger;
         }
 
-        public async Task SaveResponseAsync(int questionIndex, int responseIndex)
+        public async Task SaveResponseAsync(Response response)
         {
             throw new NotImplementedException();
         }

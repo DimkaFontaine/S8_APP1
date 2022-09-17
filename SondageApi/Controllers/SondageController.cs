@@ -28,9 +28,41 @@ public class SondageController : ControllerBase
         return _sondageReader.GetSondages();
     }
 
-    [HttpPost(Name = "SubmitSondage/{questionIndex}/{responseIndex}")]
-    public async Task SubmitSondageAsync(int questionIndex, int responseIndex)
+    [HttpPost(Name = "SubmitSondage")]
+    public async Task<IActionResult> SubmitSondageAsync(Response response)
     {
-        await _sondageResponse.SaveResponseAsync(questionIndex, responseIndex);
+        if(ValidateSondageId(response))
+        {
+            return BadRequest();
+        }
+
+        if (ValidateUserEmail(response))
+        {
+            return BadRequest();
+        }
+
+        if (ValidateAllQuestionsResponses(response))
+        {
+            return BadRequest();
+        }
+
+        await _sondageResponse.SaveResponseAsync(response);
+        return Ok();
+    }
+
+    private bool ValidateAllQuestionsResponses(Response response)
+    {
+        throw new NotImplementedException();
+    }
+
+    private bool ValidateUserEmail(Response response)
+    {
+        throw new NotImplementedException();
+    }
+
+    private bool ValidateSondageId(Response response)
+    {
+        //return _sondageReader.GetAllSondageID().containe(response.SondageId)
+        throw new NotImplementedException();
     }
 }

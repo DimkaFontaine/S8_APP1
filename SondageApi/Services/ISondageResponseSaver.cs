@@ -1,7 +1,9 @@
+using SondageApi.Models;
+
 namespace SondageApi.Services
 {
     public interface IResponse
     {
-        Task SaveResponseAsync(int questionIndex, int responseIndex);
+        Task SaveResponseAsync(Response response);
     }
 }
