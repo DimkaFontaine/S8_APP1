@@ -1,6 +1,6 @@
 namespace SondageApi.Services
 {
-    public interface ISondageResponse
+    public interface IResponse
     {
         Task SaveResponseAsync(int questionIndex, int responseIndex);
     }
