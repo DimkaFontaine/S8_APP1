@@ -1,6 +1,7 @@
 {
-  "SondageName": "Sondage Boissons",
-  "SondageQuestion":
+  "Id": "8cb72abc-0423-447d-bf7c-617d0d3eca4f",
+  "Name": "Sondage Boissons",
+  "Questions":
   [
     {
         "Question": "À quelle tranche d'âge appartenez-vous?",

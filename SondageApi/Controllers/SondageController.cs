@@ -10,12 +10,12 @@ public class SondageController : ControllerBase
 {
     private readonly ILogger<SondageController> _logger;
     private readonly ISondageReader _sondageReader;
-    private readonly ISondageResponse _sondageResponse;
+    private readonly IResponse _sondageResponse;
 
     public SondageController(
         ILogger<SondageController> logger, 
         ISondageReader sondageReader, 
-        ISondageResponse sondageResponse)
+        IResponse sondageResponse)
     {
         _logger = logger;
         _sondageReader = sondageReader;

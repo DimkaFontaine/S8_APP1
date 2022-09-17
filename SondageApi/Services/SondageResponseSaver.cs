@@ -1,10 +1,10 @@
 namespace SondageApi.Services
 {
-    public class SondageResponse : ISondageResponse
+    public class Responses : ISondageResponse
     {
-        private ILogger<SondageResponse> _logger;
+        private ILogger<Responses> _logger;
 
-        public SondageResponse(ILogger<SondageResponse> logger)
+        public Responses(ILogger<Responses> logger)
         {
             _logger = logger;
         }

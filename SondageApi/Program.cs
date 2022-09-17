@@ -44,8 +44,8 @@ builder.Services.Configure<DataBaseFileUri>(builder.Configuration.GetSection(Dat
 builder.Services.Configure<ApiKeySettings>(builder.Configuration.GetSection(ApiKeySettings.Section));
 
 builder.Services
-    .AddSingleton<ISondageResponse, SondageResponse>()
-    .AddSingleton<ISondageReader, SondageReader>();
+    .AddSingleton<ISondageResponse, Responses>()
+    .AddSingleton<ISondageReader, Reader>();
 
 var app = builder.Build();
 

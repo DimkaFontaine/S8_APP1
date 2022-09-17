@@ -1,9 +1,10 @@
 {
-  "SondageName": "Sondage Lecture",
-  "SondageQuestion":
+  "Id": "386ed262-954f-4137-b931-0435cf0f3589",
+  "Name": "Sondage Lecture",
+  "Questions":
   [
     {
-    "Question": "À quelle tranche d'âge appartenez-vous?",
+     "Question": "À quelle tranche d'âge appartenez-vous?",
      "Reponses": [
                     "0-25 ans",
                     "25-50 ans",
