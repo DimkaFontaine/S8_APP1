@@ -1,3 +1,8 @@
 namespace SondageApi.Models;
 
-public record Questions(string Question, string[] Reponses);
+public class Questions
+{
+    public short QuestionId { get; set; } = short.MinValue;
+    public string QuestionName { get; set; } = string.Empty;
+    public IEnumerable<Answer> Answers { get; set; } = Array.Empty<Answer>();
+}

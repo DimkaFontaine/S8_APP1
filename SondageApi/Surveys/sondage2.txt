@@ -1,0 +1,91 @@
+{
+  "Id": "8cb72abc-0423-447d-bf7c-617d0d3eca4f",
+  "Name": "Sondage Boissons",
+  "Questions":
+  [
+    {
+        "QuestionId": 0,
+        "QuestionName": "À quelle tranche d'âge appartenez-vous?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Name": "0-25 ans"
+                        },
+                        {
+                            "Id": 1,
+                            "Name": "25-50 ans"
+                        },
+                        {
+                            "Id": 2,
+                            "Name": "50-75 ans"
+                        },
+                        {
+                            "Id": 3,
+                            "Name": "75 ans et plus"
+                        }
+                    ]
+    },
+    {
+        "QuestionId": 1,
+        "QuestionName": "Êtes-vous une femme ou un homme?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Name": "Femme"
+                        },
+                        {
+                            "Id": 1,
+                            "Name": "Homme"
+                        },
+                        {
+                            "Id": 3,
+                            "Name": "Je ne veux pas répondre"
+                        }
+                    ]
+    },
+    {
+        "QuestionId": 2,
+        "QuestionName": "Combien de tasses de café buvez-vous chaque jour?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Name": "Je ne bois pas de café"
+                        },
+                        {
+                            "Id": 1,
+                            "Name": "Entre 1 et 5 tasses"
+                        },
+                        {
+                            "Id": 2,
+                            "Name": "Entre 6 et 10 tasses"
+                        },
+                        {
+                            "Id": 3,
+                            "Name": "10 tasses ou plus"
+                        }
+                    ]
+    },
+    {
+        "QuestionId": 3,
+        "QuestionName": "Combien de consommations alcoolisées buvez-vous chaque jour?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Name": "0"
+                        },
+                        {
+                            "Id": 1,
+                            "Name": "1"
+                        },
+                        {
+                            "Id": 2,
+                            "Name": "2"
+                        },
+                        {
+                            "Id": 3,
+                            "Name": "3 ou plus"
+                        }
+                    ] 
+    }
+  ]
+}
