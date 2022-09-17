@@ -1,0 +1,40 @@
+{
+  "SondageName": "Sondage Boissons",
+  "SondageQuestion":
+  [
+    {
+        "Question": "À quelle tranche d'âge appartenez-vous?",
+        "Reponses": [
+                    "0-25 ans",
+                    "25-50 ans",
+                    "50-75 ans",
+                    "75 ans et plus"
+                    ]
+    },
+    {
+        "Question": "Êtes-vous une femme ou un homme?",
+        "Reponses": [
+                     "Femme",
+                     "Homme",
+                     "Je ne veux pas répondre"
+                     ]
+    },
+    {
+        "Question": "Combien de tasses de café buvez-vous chaque jour?",
+        "Reponses": ["Je ne bois pas de café",
+                     "Entre 1 et 5 tasses",
+                     "Entre 6 et 10 tasses",
+                     "d:10 tasses ou plus"
+                    ]
+    },
+    {
+        "Question": "Combien de consommations alcoolisées buvez-vous chaque jour?",
+        "Reponses": [
+                    "0",
+                    "1",
+                    "2",
+                    "3 ou plus"
+                    ] 
+    }
+  ]
+}

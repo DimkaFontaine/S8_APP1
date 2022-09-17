@@ -39,6 +39,8 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.Configure<DataBaseFileUri>(builder.Configuration.GetSection(DataBaseFileUri.Section));
+
 builder.Services.Configure<ApiKeySettings>(builder.Configuration.GetSection(ApiKeySettings.Section));
 
 builder.Services

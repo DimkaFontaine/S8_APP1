@@ -4,6 +4,6 @@ namespace SondageApi.Services
 {
     public interface ISondageReader
     {
-        IEnumerable<SondageQuestion> GetSondageQuestions();
+        IEnumerable<Sondage> GetSondages();
     }
 }

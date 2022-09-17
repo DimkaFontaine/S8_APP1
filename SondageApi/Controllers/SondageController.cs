@@ -23,9 +23,9 @@ public class SondageController : ControllerBase
     }
 
     [HttpGet(Name = "GetSondages")]
-    public IEnumerable<SondageQuestion> GetSondages()
+    public IEnumerable<Sondage> GetSondages()
     {
-        return _sondageReader.GetSondageQuestions();
+        return _sondageReader.GetSondages();
     }
 
     [HttpPost(Name = "SubmitSondage/{questionIndex}/{responseIndex}")]
