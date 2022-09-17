@@ -1,5 +1,4 @@
 ﻿namespace SondageApi.Models
 {
-    public record Sondage(string SondageName,
-                          IEnumerable<Questions> SondageQuestion);
+    public record Sondage(Guid Id,string Name, IEnumerable<SondageQuestion> Questions);
 }
