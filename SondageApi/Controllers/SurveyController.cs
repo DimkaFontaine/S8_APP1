@@ -35,17 +35,20 @@ public class SurveyController : ControllerBase
     {
         if (!ValidateSurveyId(answer))
         {
-            return BadRequest();
+            _logger.LogInformation("Invalid survey id.");
+            return BadRequest("Invalid survey id.");
         }
 
         if (!ValidateUserEmail(answer))
         {
-            return BadRequest();
+            _logger.LogInformation("Invalid survey email.");
+            return BadRequest("Invalid survey email.");
         }
 
         if (!ValidateAllQuestionsAnswers(answer))
         {
-            return BadRequest();
+            _logger.LogInformation("Invalid survey format.");
+            return BadRequest("Invalid survey format.");
         }
 
         try
