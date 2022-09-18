@@ -8,11 +8,16 @@ namespace SondageApi.Services
     {
         private ILogger<SurveyAnswerSaver> _logger;
         private readonly DataBaseFileUri _dataBaseFileUri;
+        private readonly IFileWrapper _fileWrapper;
 
-        public SurveyAnswerSaver(ILogger<SurveyAnswerSaver> logger, IOptions<DataBaseFileUri> dataBaseFileUri)
+        public SurveyAnswerSaver(
+            ILogger<SurveyAnswerSaver> logger, 
+            IOptions<DataBaseFileUri> dataBaseFileUri,
+            IFileWrapper fileWrapper)
         {
             _logger = logger;
             _dataBaseFileUri = dataBaseFileUri.Value;
+            _fileWrapper = fileWrapper;
         }
 
         public async Task SaveAnswerAsync(SurveyAnswer answer)
@@ -21,14 +26,14 @@ namespace SondageApi.Services
 
             Dictionary<string, List<QuestionAnswerPair>> dataBase;
 
-            if (!File.Exists(path))
+            if (!_fileWrapper.Exists(path))
             {
-                File.Create(path).Close();
+                _fileWrapper.Create(path);
                 dataBase = new Dictionary<string, List<QuestionAnswerPair>>();
             }
             else
             {
-                var file = await File.ReadAllTextAsync(path);
+                var file = await _fileWrapper.ReadAllTextAsync(path);
 
                 dataBase = JsonSerializer.Deserialize<Dictionary<string, List<QuestionAnswerPair>>>(file) ?? throw new Exception();
             }
@@ -42,7 +47,7 @@ namespace SondageApi.Services
 
             var jsonDataBase = JsonSerializer.Serialize(dataBase);
 
-            File.WriteAllText(path, jsonDataBase);
+            _fileWrapper.WriteAllText(path, jsonDataBase);
 
             _logger.LogTrace("SaveAnswerAsync success");
         }

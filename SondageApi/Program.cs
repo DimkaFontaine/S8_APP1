@@ -45,7 +45,8 @@ builder.Services.Configure<ApiKeySettings>(builder.Configuration.GetSection(ApiK
 
 builder.Services
     .AddSingleton<ISurveyAnswerSaver, SurveyAnswerSaver>()
-    .AddSingleton<ISurveyReader, SurveyReader>();
+    .AddSingleton<ISurveyReader, SurveyReader>()
+    .AddSingleton<IFileWrapper, FileWrapper>();
 
 var app = builder.Build();
 
