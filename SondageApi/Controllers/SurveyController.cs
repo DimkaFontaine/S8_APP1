@@ -50,7 +50,6 @@ public class SurveyController : ControllerBase
             _logger.LogInformation("Invalid survey format.");
             return BadRequest("Invalid survey format.");
         }
-
         try
         {
             await _surveyAnswer.SaveAnswerAsync(answer);
@@ -70,24 +69,19 @@ public class SurveyController : ControllerBase
 
     private bool ValidateAllQuestionsAnswers(SurveyAnswer answer)
     {
-        List<QuestionAnswerPair> allQuestionAnswerPairs = new List<QuestionAnswerPair>(_surveyReader.GetAllSurveyQuestionAnswerPairs());
         if (!answer.QuestionAnswerPairList.Any())
         {
             throw new ArgumentException("There are no question/answer pair.");
         }
         else
         {
-            foreach (QuestionAnswerPair questionAnswerPair in answer.QuestionAnswerPairList) 
+            if (!_surveyReader.Contains(answer))
             {
-                // TODO: fix bug (Contains not working) 
-                //if (!allQuestionAnswerPairs.Contains(questionAnswerPair))
-                //{
-                //    throw new ArgumentException("Question/Response pair mismatch with original survey.");
-                //}
-                //else if(!_surveyReader.AllQuestionAreAnswered())
-                //{
-                //    throw new ArgumentException("Not all survey's questions have been answered.");
-                //}
+                throw new ArgumentException("Question/Answer mismatch with original survey.");
+            }
+            else if(!_surveyReader.AllQuestionAreAnswered(answer))
+            {
+                throw new ArgumentException("Not all survey's questions have been answered.");
             }
         }
         return true;

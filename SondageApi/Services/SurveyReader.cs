@@ -17,6 +17,30 @@ namespace SondageApi.Services
             _logger = logger;
         }
 
+        public bool Contains(SurveyAnswer answer) 
+        {
+            if (_surveys is null)
+            {
+                GetSurveys();
+            }
+            foreach (Survey survey in _surveys) 
+            {
+                int qNum = 0;
+                bool surveyIdCheck = survey.Id == answer.SurveyId;
+                foreach (QuestionAnswerPair qaPair in answer.QuestionAnswerPairList)
+                {
+                    bool surveyQuestionCheck = survey.Questions.Any(q => q.QuestionId == qaPair.QuestionId);
+                    bool surveyAnswerCheck = survey.Questions.ElementAt(qNum).Answers.Any(a => a.Id == qaPair.AnswerId);
+                    if (surveyIdCheck && surveyQuestionCheck && surveyAnswerCheck)
+                    {
+                        return true;
+                    }
+                    qNum++;
+                }
+            }
+            return false;
+        }
+
         public IEnumerable<Survey> GetSurveys()
         {
             if (_surveys is not null)
@@ -79,26 +103,23 @@ namespace SondageApi.Services
                 {
                     foreach (Answer answer in question.Answers) 
                     {
-                        questionResponsePairs.Add(new QuestionAnswerPair(question.QuestionId, answer.Id));
+                          questionResponsePairs.Add(new QuestionAnswerPair(question.QuestionId, answer.Id));
                     }
                 }
             }
             return questionResponsePairs;
         }
 
-        public bool AllQuestionAreAnswered() 
+        public bool AllQuestionAreAnswered(SurveyAnswer answer) 
         {
-            if (_surveys is null)
-            {
-                GetSurveys();
-            }
-            List<QuestionAnswerPair> questionAnswerPair = GetAllSurveyQuestionAnswerPairs();
-            int nQuestion = 0;
             foreach (Survey survey in _surveys) 
             {
-                nQuestion = nQuestion + survey.Questions.Count();
+                if (!(survey.Questions.Count() == answer.QuestionAnswerPairList.Count())) 
+                {
+                    return false;
+                }
             }
-            return nQuestion == questionAnswerPair.Count();
+            return true;
         }
     }
 }
