@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using SondageApi.Models;
 using SondageApi.Services;
+using System.Net;
+using System.Net.Mail;
 
 namespace SondageApi.Controllers;
 
@@ -10,12 +12,12 @@ public class SurveyController : ControllerBase
 {
     private readonly ILogger<SurveyController> _logger;
     private readonly ISurveyReader _surveyReader;
-    private readonly IAnswer _surveyAnswer;
+    private readonly ISurveyAnswerSaver _surveyAnswer;
 
     public SurveyController(
         ILogger<SurveyController> logger,
         ISurveyReader surveyReader,
-        IAnswer surveyAnswer)
+        ISurveyAnswerSaver surveyAnswer)
     {
         _logger = logger;
         _surveyReader = surveyReader;
@@ -31,23 +33,36 @@ public class SurveyController : ControllerBase
     [HttpPost(Name = "SubmitSurvey")]
     public async Task<IActionResult> SubmitSurveyAsync(SurveyAnswer answer)
     {
-        if (ValidateSurveyId(answer))
+        if (!ValidateSurveyId(answer))
         {
             return BadRequest();
         }
 
-        if (ValidateUserEmail(answer))
+        if (!ValidateUserEmail(answer))
         {
             return BadRequest();
         }
 
-        if (ValidateAllQuestionsAnswers(answer))
+        if (!ValidateAllQuestionsAnswers(answer))
         {
             return BadRequest();
         }
 
-        await _surveyAnswer.SaveAnswerAsync(answer);
-        return Ok();
+        try
+        {
+            await _surveyAnswer.SaveAnswerAsync(answer);
+            return Ok();
+        }
+        catch (UnauthorizedAccessException)
+        {
+            _logger.LogInformation("Already existing answer from this user");
+            return BadRequest("Already existing answer from this user");
+        }
+        catch (Exception e)
+        {
+            _logger.LogError("Faild with error:{e.Message}, to save response:{response}", e.Message, answer);
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+        }
     }
 
     private bool ValidateAllQuestionsAnswers(SurveyAnswer answer)
@@ -61,14 +76,15 @@ public class SurveyController : ControllerBase
         {
             foreach (QuestionAnswerPair questionAnswerPair in answer.QuestionAnswerPairList) 
             {
-                if (!allQuestionAnswerPairs.Contains(questionAnswerPair))
-                {
-                    throw new ArgumentException("Question/Response pair mismatch with original survey.");
-                }
-                else if(!_surveyReader.AllQuestionAreAnswered())
-                {
-                    throw new ArgumentException("Not all survey's questions have been answered.");
-                }
+                // TODO: fix bug (Contains not working) 
+                //if (!allQuestionAnswerPairs.Contains(questionAnswerPair))
+                //{
+                //    throw new ArgumentException("Question/Response pair mismatch with original survey.");
+                //}
+                //else if(!_surveyReader.AllQuestionAreAnswered())
+                //{
+                //    throw new ArgumentException("Not all survey's questions have been answered.");
+                //}
             }
         }
         return true;
@@ -76,7 +92,14 @@ public class SurveyController : ControllerBase
 
     private bool ValidateUserEmail(SurveyAnswer answer)
     {
-        throw new NotImplementedException();
+        try
+        {
+            return !string.IsNullOrEmpty(answer.UserEmail) && new MailAddress(answer.UserEmail) is not null;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private bool ValidateSurveyId(SurveyAnswer answer)

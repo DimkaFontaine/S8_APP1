@@ -26,8 +26,6 @@ namespace SondageApi.Services
 
             try
             {
-                _logger.LogInformation("\tTrying to read: " + Directory.GetCurrentDirectory() + _dataBaseFileUri.DataBaseReadFileUri);
-                _logger.LogInformation("\tDirectory Exists:  " + Directory.Exists(Directory.GetCurrentDirectory() + _dataBaseFileUri.DataBaseReadFileUri));
                 string[] files = Directory.GetFiles(Directory.GetCurrentDirectory() + _dataBaseFileUri.DataBaseReadFileUri);
                 _surveys = new List<Survey>();
 
@@ -56,6 +54,10 @@ namespace SondageApi.Services
 
         public List<Guid> GetAllSurveyIds() 
         {
+            if(_surveys is null)
+            {
+                GetSurveys();
+            }
             List<Guid> sondagesGuids = new List<Guid>();
             foreach (Survey sondage in _surveys) 
             {
@@ -66,6 +68,10 @@ namespace SondageApi.Services
 
         public List<QuestionAnswerPair> GetAllSurveyQuestionAnswerPairs() 
         {
+            if (_surveys is null)
+            {
+                GetSurveys();
+            }
             List<QuestionAnswerPair> questionResponsePairs = new List<QuestionAnswerPair>();
             foreach (Survey survey in _surveys) 
             {
@@ -73,7 +79,7 @@ namespace SondageApi.Services
                 {
                     foreach (Answer answer in question.Answers) 
                     {
-                        questionResponsePairs.Add(new QuestionAnswerPair(survey.Id, question.QuestionId, answer.Id));
+                        questionResponsePairs.Add(new QuestionAnswerPair(question.QuestionId, answer.Id));
                     }
                 }
             }
@@ -82,6 +88,10 @@ namespace SondageApi.Services
 
         public bool AllQuestionAreAnswered() 
         {
+            if (_surveys is null)
+            {
+                GetSurveys();
+            }
             List<QuestionAnswerPair> questionAnswerPair = GetAllSurveyQuestionAnswerPairs();
             int nQuestion = 0;
             foreach (Survey survey in _surveys) 

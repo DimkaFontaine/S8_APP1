@@ -9,19 +9,19 @@
         "Answers": [
                         {
                             "Id": 0,
-                            "Name": "0-25 ans"
+                            "Text": "0-25 ans"
                         },
                         {
                             "Id": 1,
-                            "Name": "25-50 ans"
+                            "Text": "25-50 ans"
                         },
                         {
                             "Id": 2,
-                            "Name": "50-75 ans"
+                            "Text": "50-75 ans"
                         },
                         {
                             "Id": 3,
-                            "Name": "75 ans et plus"
+                            "Text": "75 ans et plus"
                         }
                     ]
     },
@@ -31,15 +31,15 @@
         "Answers": [
                         {
                             "Id": 0,
-                            "Name": "Femme"
+                            "Text": "Femme"
                         },
                         {
                             "Id": 1,
-                            "Name": "Homme"
+                            "Text": "Homme"
                         },
                         {
                             "Id": 3,
-                            "Name": "Je ne veux pas répondre"
+                            "Text": "Je ne veux pas répondre"
                         }
                     ]
     },
@@ -49,19 +49,19 @@
         "Answers": [
                         {
                             "Id": 0,
-                            "Name": "Je ne bois pas de café"
+                            "Text": "Je ne bois pas de café"
                         },
                         {
                             "Id": 1,
-                            "Name": "Entre 1 et 5 tasses"
+                            "Text": "Entre 1 et 5 tasses"
                         },
                         {
                             "Id": 2,
-                            "Name": "Entre 6 et 10 tasses"
+                            "Text": "Entre 6 et 10 tasses"
                         },
                         {
                             "Id": 3,
-                            "Name": "10 tasses ou plus"
+                            "Text": "10 tasses ou plus"
                         }
                     ]
     },
@@ -71,19 +71,19 @@
         "Answers": [
                         {
                             "Id": 0,
-                            "Name": "0"
+                            "Text": "0"
                         },
                         {
                             "Id": 1,
-                            "Name": "1"
+                            "Text": "1"
                         },
                         {
                             "Id": 2,
-                            "Name": "2"
+                            "Text": "2"
                         },
                         {
                             "Id": 3,
-                            "Name": "3 ou plus"
+                            "Text": "3 ou plus"
                         }
                     ] 
     }

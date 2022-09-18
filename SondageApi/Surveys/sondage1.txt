@@ -9,19 +9,19 @@
         "Answers": [
                         {
                             "Id": 0,
-                            "Name": "0-25 ans"
+                            "Text": "0-25 ans"
                         },
                         {
                             "Id": 1,
-                            "Name": "25-50 ans"
+                            "Text": "25-50 ans"
                         },
                         {
                             "Id": 2,
-                            "Name": "50-75 ans"
+                            "Text": "50-75 ans"
                         },
                         {
                             "Id": 3,
-                            "Name": "75 ans et plus"
+                            "Text": "75 ans et plus"
                         }
                     ]
     },
@@ -31,15 +31,15 @@
         "Answers": [
                         {
                             "Id": 0,
-                            "Name": "Femme"
+                            "Text": "Femme"
                         },
                         {
                             "Id": 1,
-                            "Name": "Homme"
+                            "Text": "Homme"
                         },
                         {
                             "Id": 2,
-                            "Name": "Je ne veux pas répondre"
+                            "Text": "Je ne veux pas répondre"
                         }
                     ]
     },
@@ -49,19 +49,19 @@
         "Answers": [
                         {
                             "Id": 0,
-                            "Name": "La Presse"
+                            "Text": "La Presse"
                         },
                         {
                             "Id": 1,
-                            "Name": "Le Journal de Montréal"
+                            "Text": "Le Journal de Montréal"
                         },
                         {
                             "Id": 2,
-                            "Name": "The Gazette"
+                            "Text": "The Gazette"
                         },
                         {
                             "Id": 3,
-                            "Name": "Le Devoir"
+                            "Text": "Le Devoir"
                         }
                     ]
     },
@@ -71,19 +71,19 @@
         "Answers": [
                         {
                             "Id": 0,
-                            "Name": "Moins de 10 minutes"
+                            "Text": "Moins de 10 minutes"
                         },
                         {
                             "Id" :1,
-                            "Name": "Entre 10 et 30 minutes"
+                            "Text": "Entre 10 et 30 minutes"
                         },
                         {
                             "Id": 2,
-                            "Name": "Entre 30 et 60 minutes"
+                            "Text": "Entre 30 et 60 minutes"
                         },
                         {
                             "Id": 3,
-                            "Name": "60 minutes ou plus"
+                            "Text": "60 minutes ou plus"
                         }
                     ]
     }
