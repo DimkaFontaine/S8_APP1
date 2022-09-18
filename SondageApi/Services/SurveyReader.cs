@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using SondageApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Text.Json;
+using System.Linq;
 
 namespace SondageApi.Services
 {
@@ -82,12 +83,7 @@ namespace SondageApi.Services
             {
                 GetSurveys();
             }
-            List<Guid> sondagesGuids = new List<Guid>();
-            foreach (Survey sondage in _surveys) 
-            {
-                sondagesGuids.Add(sondage.Id);
-            }
-            return sondagesGuids;
+            return (_surveys.Select(sondage => sondage.Id)).ToList();
         }
 
         public List<QuestionAnswerPair> GetAllSurveyQuestionAnswerPairs() 
@@ -96,28 +92,14 @@ namespace SondageApi.Services
             {
                 GetSurveys();
             }
-            List<QuestionAnswerPair> questionResponsePairs = new List<QuestionAnswerPair>();
-            foreach (Survey survey in _surveys) 
-            {
-                foreach (Questions question in survey.Questions) 
-                {
-                    foreach (Answer answer in question.Answers) 
-                    {
-                          questionResponsePairs.Add(new QuestionAnswerPair(question.QuestionId, answer.Id));
-                    }
-                }
-            }
-            return questionResponsePairs;
+            return (_surveys.SelectMany(survey => survey.Questions.SelectMany(question => question.Answers.Select(answer => new QuestionAnswerPair(question.QuestionId, answer.Id))))).ToList();
         }
 
         public bool AllQuestionAreAnswered(SurveyAnswer answer) 
         {
-            foreach (Survey survey in _surveys) 
+            foreach (var _ in _surveys.Where(survey => !(survey.Questions.Count() == answer.QuestionAnswerPairList.Count())).Select(survey => new { }))
             {
-                if (!(survey.Questions.Count() == answer.QuestionAnswerPairList.Count())) 
-                {
-                    return false;
-                }
+                return false;
             }
             return true;
         }
