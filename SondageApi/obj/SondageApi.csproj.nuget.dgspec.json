@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Uni\\S8\\App1\\S8_APP1\\SondageApi\\SondageApi.csproj": {}
+    "C:\\Users\\Chuck\\source\\repos\\DimkaFontaine\\S8_APP1\\SondageApi\\SondageApi.csproj": {}
   },
   "projects": {
-    "D:\\Uni\\S8\\App1\\S8_APP1\\SondageApi\\SondageApi.csproj": {
+    "C:\\Users\\Chuck\\source\\repos\\DimkaFontaine\\S8_APP1\\SondageApi\\SondageApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Uni\\S8\\App1\\S8_APP1\\SondageApi\\SondageApi.csproj",
+        "projectUniqueName": "C:\\Users\\Chuck\\source\\repos\\DimkaFontaine\\S8_APP1\\SondageApi\\SondageApi.csproj",
         "projectName": "SondageApi",
-        "projectPath": "D:\\Uni\\S8\\App1\\S8_APP1\\SondageApi\\SondageApi.csproj",
-        "packagesPath": "C:\\Users\\Dimka\\.nuget\\packages\\",
-        "outputPath": "D:\\Uni\\S8\\App1\\S8_APP1\\SondageApi\\obj\\",
+        "projectPath": "C:\\Users\\Chuck\\source\\repos\\DimkaFontaine\\S8_APP1\\SondageApi\\SondageApi.csproj",
+        "packagesPath": "C:\\Users\\Chuck\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Chuck\\source\\repos\\DimkaFontaine\\S8_APP1\\SondageApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Dimka\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Chuck\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -43,6 +47,10 @@
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[6.0.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

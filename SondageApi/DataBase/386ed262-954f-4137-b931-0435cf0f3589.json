@@ -1,1 +1,20 @@
-{"dim@test.com":[{"QuestionId":0,"AnswerId":0},{"QuestionId":1,"AnswerId":1},{"QuestionId":2,"AnswerId":0},{"QuestionId":3,"AnswerId":1}]}
+{
+  "dim@test.com": [
+    {
+      "QuestionId": 0,
+      "AnswerId": 0
+    },
+    {
+      "QuestionId": 1,
+      "AnswerId": 1
+    },
+    {
+      "QuestionId": 2,
+      "AnswerId": 0
+    },
+    {
+      "QuestionId": 3,
+      "AnswerId": 1
+    }
+  ]
+}
