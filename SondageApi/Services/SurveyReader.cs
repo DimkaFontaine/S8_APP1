@@ -1,9 +1,12 @@
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using SondageApi.Models;
 using System.Text.Json;
 using System.Linq;
 using Microsoft.VisualBasic;
 using System.Collections.ObjectModel;
+using JsonException = System.Text.Json.JsonException;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace SondageApi.Services
 {
@@ -74,10 +77,20 @@ namespace SondageApi.Services
                 }
                 return surveys;
             }
-            catch (ArgumentNullException nullEx)
+            catch (ArgumentNullException nullException)
             {
-                _logger.LogError("Could not Deserialize " + nullEx.ToString() + "to json object.");
-                return new List<Survey>();
+                _logger.LogError("utf8Json or returnType is null.");
+                return Array.Empty<Survey>();
+            }
+            catch (JsonException jsonException)
+            {
+                _logger.LogError("The JSON is invalid, the returnType is not compatible with the JSON, or there is remaining data in the Stream.");
+                return Array.Empty<Survey>();
+            }
+            catch (NotSupportedException notSupportedException) 
+            {
+                _logger.LogError("There is no compatible JsonConverter for returnType or its serializable members.");
+                return Array.Empty<Survey>();
             }
             catch
             {
