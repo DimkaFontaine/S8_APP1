@@ -228,6 +228,70 @@ namespace TestSondageApi.UnitTest
             Assert.True(((BadRequestObjectResult)actionResult).StatusCode == 400);
         }
 
+        [Fact]
+        public async Task GivenSurveyAnswer_WhenAlredyExistingUser_ThenGetBadRequest()
+        {
+            // Arrange
+            var surveyAnswer = new SurveyAnswer()
+            {
+                SurveyId = _fixture.Create<Guid>(),
+                UserEmail = _fixture.Create<MailAddress>().ToString(),
+                QuestionAnswerPairList = _fixture.Create<List<QuestionAnswerPair>>()
+            };
+
+            _mockSurveyReader
+                .Setup(m => m.GetAllSurveyIds())
+                .Returns(new List<Guid>() { surveyAnswer.SurveyId });
+            _mockSurveyReader
+                .Setup(m => m.Contains(It.IsAny<SurveyAnswer>()))
+                .Returns(true);
+            _mockSurveyReader
+                .Setup(m => m.AllQuestionAreAnswered(It.IsAny<SurveyAnswer>()))
+                .Returns(true);
+            _mockSurveyAnswerSaver
+                .Setup(m => m.SaveAnswerAsync(It.IsAny<SurveyAnswer>())).Throws(new UnauthorizedAccessException());
+
+            // Act
+            var actionResult = await _surveyController.SubmitSurveyAsync(surveyAnswer);
+
+            // Assert
+            _mockSurveyAnswerSaver.Verify(m => m.SaveAnswerAsync(It.IsAny<SurveyAnswer>()), Times.Once);
+            Assert.IsType<BadRequestObjectResult>(actionResult);
+            Assert.True(((BadRequestObjectResult)actionResult).StatusCode == 400);
+        }
+
+        [Fact]
+        public async Task GivenSurveyAnswer_WhenSaveError_ThenGetInternalServerError()
+        {
+            // Arrange
+            var surveyAnswer = new SurveyAnswer()
+            {
+                SurveyId = _fixture.Create<Guid>(),
+                UserEmail = _fixture.Create<MailAddress>().ToString(),
+                QuestionAnswerPairList = _fixture.Create<List<QuestionAnswerPair>>()
+            };
+
+            _mockSurveyReader
+                .Setup(m => m.GetAllSurveyIds())
+                .Returns(new List<Guid>() { surveyAnswer.SurveyId });
+            _mockSurveyReader
+                .Setup(m => m.Contains(It.IsAny<SurveyAnswer>()))
+                .Returns(true);
+            _mockSurveyReader
+                .Setup(m => m.AllQuestionAreAnswered(It.IsAny<SurveyAnswer>()))
+                .Returns(true);
+            _mockSurveyAnswerSaver
+                .Setup(m => m.SaveAnswerAsync(It.IsAny<SurveyAnswer>())).Throws(new Exception());
+
+            // Act
+            var actionResult = await _surveyController.SubmitSurveyAsync(surveyAnswer);
+
+            // Assert
+            _mockSurveyAnswerSaver.Verify(m => m.SaveAnswerAsync(It.IsAny<SurveyAnswer>()), Times.Once);
+            Assert.IsType<StatusCodeResult>(actionResult);
+            Assert.Equal(500, ((StatusCodeResult)actionResult).StatusCode);
+        }
+
         private void SetupMockHappyPath(SurveyAnswer surveyAnswer)
         {
             _mockSurveyReader
