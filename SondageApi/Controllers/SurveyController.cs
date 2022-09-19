@@ -35,12 +35,17 @@ public class SurveyController : ControllerBase
     {
         if (!ValidateUserEmail(answer))
         {
-            return BadRequest();
+            return BadRequest("Invalid email");
+        }
+
+        if(!ValidateSurveyId(answer))
+        {
+            return BadRequest("Invalid survey id");
         }
 
         if (!ValidateAllQuestionsAnswers(answer))
         {
-            return BadRequest();
+            return BadRequest("Invalid survey content");
         }
 
         try
@@ -64,17 +69,21 @@ public class SurveyController : ControllerBase
     {
         if (!answer.QuestionAnswerPairList.Any())
         {
-            throw new ArgumentException("There are no question/answer pair.");
+            _logger.LogInformation("There are no question/answer pair.");
+            return false;
         }
         else
         {
             if (!_surveyReader.Contains(answer))
             {
-                throw new ArgumentException("Question/Answer mismatch with original survey.");
+                _logger.LogInformation("Question/Answer mismatch with original survey.");
+                return false;
             }
-            else if(!_surveyReader.AllQuestionAreAnswered(answer))
+
+            if (!_surveyReader.AllQuestionAreAnswered(answer))
             {
-                throw new ArgumentException("Not all survey's questions have been answered.");
+                _logger.LogInformation("Not all survey's questions have been answered.");
+                return false;
             }
         }
         return true;
