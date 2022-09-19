@@ -1,0 +1,73 @@
+{
+  "Id": "8cb72abc-0423-447d-bf7c-617d0d3eca4f",
+  "Name": "Sondage Test_MissingElement",
+  "Questions":
+  [
+    {
+        "QuestionId": 0,
+        "QuestionName": "À quelle tranche d'âge appartenez-vous?",
+    },
+    {
+        "QuestionId": 1,
+        "QuestionName": "Êtes-vous une femme ou un homme?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Text": "Femme"
+                        },
+                        {
+                            "Id": 1,
+                            "Text": "Homme"
+                        },
+                        {
+                            "Id": 3,
+                            "Text": "Je ne veux pas répondre"
+                        }
+                    ]
+    },
+    {
+        "QuestionId": 2,
+        "QuestionName": "Combien de tasses de café buvez-vous chaque jour?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Text": "Je ne bois pas de café"
+                        },
+                        {
+                            "Id": 1,
+                            "Text": "Entre 1 et 5 tasses"
+                        },
+                        {
+                            "Id": 2,
+                            "Text": "Entre 6 et 10 tasses"
+                        },
+                        {
+                            "Id": 3,
+                            "Text": "10 tasses ou plus"
+                        }
+                    ]
+    },
+    {
+        "QuestionId": 3,
+        "QuestionName": "Combien de consommations alcoolisées buvez-vous chaque jour?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Text": "0"
+                        },
+                        {
+                            "Id": 1,
+                            "Text": "1"
+                        },
+                        {
+                            "Id": 2,
+                            "Text": "2"
+                        },
+                        {
+                            "Id": 3,
+                            "Text": "3 ou plus"
+                        }
+                    ] 
+    }
+  ]
+}
