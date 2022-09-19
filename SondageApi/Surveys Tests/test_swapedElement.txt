@@ -1,11 +1,29 @@
 {
-  "Id": "8cb72abc-0423-447d-bf7c-617d0d3eca4f",
-  "Name": "Test MissingElement",
+  "Id": "386ed262-954f-4137-b931-0435cf0f3589",
+  "Name": "Test SwapedElement",
   "Questions":
   [
     {
-        "QuestionId": 0,
         "QuestionName": "À quelle tranche d'âge appartenez-vous?",
+        "QuestionId": 0,
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Text": "0-25 ans"
+                        },
+                        {
+                            "Id": 1,
+                            "Text": "25-50 ans"
+                        },
+                        {
+                            "Id": 2,
+                            "Text": "50-75 ans"
+                        },
+                        {
+                            "Id": 3,
+                            "Text": "75 ans et plus"
+                        }
+                    ]
     },
     {
         "QuestionId": 1,
@@ -20,54 +38,54 @@
                             "Text": "Homme"
                         },
                         {
-                            "Id": 3,
+                            "Id": 2,
                             "Text": "Je ne veux pas répondre"
                         }
                     ]
     },
     {
         "QuestionId": 2,
-        "QuestionName": "Combien de tasses de café buvez-vous chaque jour?",
+        "QuestionName": "Quel journal lisez-vous à la maison?",
         "Answers": [
                         {
                             "Id": 0,
-                            "Text": "Je ne bois pas de café"
+                            "Text": "La Presse"
                         },
                         {
                             "Id": 1,
-                            "Text": "Entre 1 et 5 tasses"
+                            "Text": "Le Journal de Montréal"
                         },
                         {
                             "Id": 2,
-                            "Text": "Entre 6 et 10 tasses"
+                            "Text": "The Gazette"
                         },
                         {
                             "Id": 3,
-                            "Text": "10 tasses ou plus"
+                            "Text": "Le Devoir"
                         }
                     ]
     },
     {
         "QuestionId": 3,
-        "QuestionName": "Combien de consommations alcoolisées buvez-vous chaque jour?",
+        "QuestionName": "Combien de temps accordez-vous à la lecture de votre journal quotidiennement?",
         "Answers": [
                         {
                             "Id": 0,
-                            "Text": "0"
+                            "Text": "Moins de 10 minutes"
                         },
                         {
-                            "Id": 1,
-                            "Text": "1"
+                            "Id" :1,
+                            "Text": "Entre 10 et 30 minutes"
                         },
                         {
                             "Id": 2,
-                            "Text": "2"
+                            "Text": "Entre 30 et 60 minutes"
                         },
                         {
                             "Id": 3,
-                            "Text": "3 ou plus"
+                            "Text": "60 minutes ou plus"
                         }
-                    ] 
+                    ]
     }
   ]
 }
