@@ -33,23 +33,16 @@ public class SurveyController : ControllerBase
     [HttpPost(Name = "SubmitSurvey")]
     public async Task<IActionResult> SubmitSurveyAsync(SurveyAnswer answer)
     {
-        if (!ValidateSurveyId(answer))
-        {
-            _logger.LogInformation("Invalid survey id.");
-            return BadRequest("Invalid survey id.");
-        }
-
         if (!ValidateUserEmail(answer))
         {
-            _logger.LogInformation("Invalid survey email.");
-            return BadRequest("Invalid survey email.");
+            return BadRequest();
         }
 
         if (!ValidateAllQuestionsAnswers(answer))
         {
-            _logger.LogInformation("Invalid survey format.");
-            return BadRequest("Invalid survey format.");
+            return BadRequest();
         }
+
         try
         {
             await _surveyAnswer.SaveAnswerAsync(answer);
@@ -71,21 +64,17 @@ public class SurveyController : ControllerBase
     {
         if (!answer.QuestionAnswerPairList.Any())
         {
-            _logger.LogInformation("There are no question/answer pair.");
-            return false;
+            throw new ArgumentException("There are no question/answer pair.");
         }
         else
         {
             if (!_surveyReader.Contains(answer))
             {
-                _logger.LogInformation("Question/Answer mismatch with original survey.");
-                return false;
+                throw new ArgumentException("Question/Answer mismatch with original survey.");
             }
-            
-            if(!_surveyReader.AllQuestionAreAnswered(answer))
+            else if(!_surveyReader.AllQuestionAreAnswered(answer))
             {
-                _logger.LogInformation("Not all survey's questions have been answered.");
-                return false;
+                throw new ArgumentException("Not all survey's questions have been answered.");
             }
         }
         return true;

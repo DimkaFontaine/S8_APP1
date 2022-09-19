@@ -80,17 +80,7 @@ namespace SondageApi.Services
             catch (ArgumentNullException nullException)
             {
                 _logger.LogError("utf8Json or returnType is null.");
-                return Array.Empty<Survey>();
-            }
-            catch (JsonException jsonException)
-            {
-                _logger.LogError("The JSON is invalid, the returnType is not compatible with the JSON, or there is remaining data in the Stream.");
-                return Array.Empty<Survey>();
-            }
-            catch (NotSupportedException notSupportedException) 
-            {
-                _logger.LogError("There is no compatible JsonConverter for returnType or its serializable members.");
-                return Array.Empty<Survey>();
+                return new List<Survey>();
             }
             catch
             {

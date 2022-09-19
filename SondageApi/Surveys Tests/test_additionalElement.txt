@@ -1,0 +1,92 @@
+{
+  "Id": "386ed262-954f-4137-b931-0435cf0f3589",
+  "Name": "Sondage Lecture",
+  "Questions":
+  [
+    {
+        "QuestionDate": "12-02-2022",
+        "QuestionId": 0,
+        "QuestionName": "À quelle tranche d'âge appartenez-vous?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Text": "0-25 ans"
+                        },
+                        {
+                            "Id": 1,
+                            "Text": "25-50 ans"
+                        },
+                        {
+                            "Id": 2,
+                            "Text": "50-75 ans"
+                        },
+                        {
+                            "Id": 3,
+                            "Text": "75 ans et plus"
+                        }
+                    ]
+    },
+    {
+        "QuestionId": 1,
+        "QuestionName": "Êtes-vous une femme ou un homme?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Text": "Femme"
+                        },
+                        {
+                            "Id": 1,
+                            "Text": "Homme"
+                        },
+                        {
+                            "Id": 2,
+                            "Text": "Je ne veux pas répondre"
+                        }
+                    ]
+    },
+    {
+        "QuestionId": 2,
+        "QuestionName": "Quel journal lisez-vous à la maison?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Text": "La Presse"
+                        },
+                        {
+                            "Id": 1,
+                            "Text": "Le Journal de Montréal"
+                        },
+                        {
+                            "Id": 2,
+                            "Text": "The Gazette"
+                        },
+                        {
+                            "Id": 3,
+                            "Text": "Le Devoir"
+                        }
+                    ]
+    },
+    {
+        "QuestionId": 3,
+        "QuestionName": "Combien de temps accordez-vous à la lecture de votre journal quotidiennement?",
+        "Answers": [
+                        {
+                            "Id": 0,
+                            "Text": "Moins de 10 minutes"
+                        },
+                        {
+                            "Id" :1,
+                            "Text": "Entre 10 et 30 minutes"
+                        },
+                        {
+                            "Id": 2,
+                            "Text": "Entre 30 et 60 minutes"
+                        },
+                        {
+                            "Id": 3,
+                            "Text": "60 minutes ou plus"
+                        }
+                    ]
+    }
+  ]
+}
